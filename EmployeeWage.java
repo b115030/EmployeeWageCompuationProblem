@@ -1,20 +1,22 @@
+import java.util.*;
 public class EmployeeWage {
 	
-	public final int WAGE_PER_HOUR=20;
-	public final int HALF_HOURS_PER_DAY=4;
-	public final int FULL_HOURS_PER_DAY=8;
-	public final int MAX_DAYS=20;
-	public final int MAX_HOURS=100;
-	int total_hours=0;
-	int wage;
-	int total_monthly_wage=0;
+	int WAGE_PER_HOUR,HALF_HOURS_PER_DAY,FULL_HOURS_PER_DAY,MAX_DAYS,MAX_HOURS,total_hours,wage,total_monthly_wage;
+	
+	EmployeeWage(int WAGE_PER_HOUR,int HALF_HOURS_PER_DAY,int FULL_HOURS_PER_DAY,int MAX_DAYS,int MAX_HOURS){
+	this.FULL_HOURS_PER_DAY=FULL_HOURS_PER_DAY;
+	this.HALF_HOURS_PER_DAY=HALF_HOURS_PER_DAY;
+	this.WAGE_PER_HOUR=WAGE_PER_HOUR;
+	this.MAX_DAYS=MAX_DAYS;
+	this.MAX_HOURS=MAX_HOURS;
+	}
    public int attendance() {
 	   
 	   int n=(int)(Math.random()*3);
 	   return n;
    }
 	private void employeeWageComp() {	
-		System.out.println("**Welcome to Employee Wage Computation Problem**");
+
 		for(int i=1;i<=MAX_DAYS&&total_hours<MAX_HOURS;i++) {
 			System.out.print("Wage of Employee on "+i+"th day:");
 			switch(attendance()) {
@@ -30,12 +32,25 @@ public class EmployeeWage {
 					break;
 			default: System.out.println("0 Rs");
 			}
+
 		}
 		System.out.println("Total Monthly Wage for Employee "+total_monthly_wage+" Rs");
-
 	}
 	public static void main(String[] args) {
-		EmployeeWage ewc =new EmployeeWage();
+		Scanner readIn=new Scanner(System.in);
+		System.out.println("**Welcome to Employee Wage Computation Problem**");
+		System.out.println("Enter the following:");
+		System.out.println("Daily wage per hour");
+		int dailyWage=readIn.nextInt();
+		System.out.println("Number of hours for a full day");
+		int fullTime=readIn.nextInt();
+		System.out.println("Number of hours for a half day");
+		int halfTime=readIn.nextInt();
+		System.out.println("Maximum of working hours in a month");
+		int maxHours=readIn.nextInt();
+		System.out.println("Maximum of working days in a month");
+		int maxDays=readIn.nextInt();
+		EmployeeWage ewc =new EmployeeWage(dailyWage,halfTime,fullTime,maxDays,maxHours);
 		ewc.employeeWageComp();
 	}
 }
