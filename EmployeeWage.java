@@ -28,7 +28,11 @@ class EmployeeWage {
 	}
 		
 }
-class CompanyEmpWage {
+interface EmpWageBuilder{
+	int attendance();
+	void employeeWageComp();
+}
+class CompanyEmpWage implements EmpWageBuilder{
 int WAGE_PER_HOUR,HALF_HOURS_PER_DAY,FULL_HOURS_PER_DAY,MAX_DAYS,MAX_HOURS,total_hours,wage,total_monthly_wage;
 	
 	CompanyEmpWage(int WAGE_PER_HOUR,int HALF_HOURS_PER_DAY,int FULL_HOURS_PER_DAY,int MAX_DAYS,int MAX_HOURS){
