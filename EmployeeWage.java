@@ -1,12 +1,12 @@
 import java.util.*;
-class EmployeeWage {
+public class EmployeeWage {
 	
 	public static void main(String[] args) {
 		Scanner readIn=new Scanner(System.in);
 		System.out.println("**Welcome to Employee Wage Computation Problem**");
-		System.out.println("How Many Comapanies Do you want to compute Employee wage for? (Should be <10)");
+		System.out.println("How Many Comapanies Do you want to compute Employee wage for?");
 		int n=readIn.nextInt();
-		CompanyEmpWage[] ewc =new CompanyEmpWage[n];
+		List<CompanyEmpWage> ewc=new ArrayList<>();
 		for (int i=0;i<n;i++) {
 		System.out.println("Enter the following for "+(i+1)+"th Comapny" );
 		System.out.println("Daily wage per hour");
@@ -19,15 +19,15 @@ class EmployeeWage {
 		int maxHours=readIn.nextInt();
 		System.out.println("Maximum of working days in a month");
 		int maxDays=readIn.nextInt();
-		ewc[i]=new CompanyEmpWage(dailyWage,halfTime,fullTime,maxDays,maxHours);
+		ewc.add(new CompanyEmpWage(dailyWage,halfTime,fullTime,maxDays,maxHours));
 		}
-		for (int i=0;i<n;i++) {
-			System.out.println("Employee Wage Computation of "+(i+1)+"th Company");
-			ewc[i].employeeWageComp();
+		ewc.forEach(user->{
+			System.out.println("Employee Wage Computation of Company");
+			user.employeeWageComp();
+		}); 
+			
 		}
 	}
-		
-}
 interface EmpWageBuilder{
 	int attendance();
 	void employeeWageComp();
